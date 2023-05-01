@@ -1,0 +1,54 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    <h1>Listar y añadir cursos</h1>
+
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<h1>Ingrese los datos del curso</h1>
+
+<form action="" method="post">
+        {% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        </table>
+        
+<input type="submit" value="agregar">
+<p></p>
+<p></p>
+
+</form>
+
+<table>
+  <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Comision</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    
+    {% for curso in cursos %}
+    <tr>
+        <td>
+            {{ curso.id }}
+        </td>
+        <td>
+            {{ curso.nombre }}
+        </td>
+        <td>
+            {{ curso.comision }}
+        </td>
+        
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

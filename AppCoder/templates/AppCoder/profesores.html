@@ -1,0 +1,64 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    <h1>Listar y añadir profesores</h1>
+
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<h1>Ingrese los datos del docente</h1>
+<h2>{{ mensaje }}</h2>
+<form action="" method="post">
+        {% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        </table>
+        
+<input type="submit" value="agregar">
+<p></p>
+<p></p>
+
+</form>
+
+<table>
+  <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Asignatura</th>
+        <th>OPCIONES</th>
+  </thead>
+  <tbody>
+
+    
+    {% for profesor in profesores %}
+    <tr>
+        <td>
+            {{ profesor.id }}
+        </td>
+        <td>
+            {{ profesor.nombre }}
+        </td>
+        <td>
+            {{ profesor.apellido }}
+        </td>
+        <td>
+            {{ profesor.email }}
+        </td>
+        <td>
+            {{ profesor.profesion }}
+        </td>
+        <td>
+        
+        </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
